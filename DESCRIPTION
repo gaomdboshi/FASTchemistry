@@ -1,0 +1,33 @@
+Package: FASTchemistry
+Type: Package
+Title: Missense Mutation Analysis and Quantum Chemistry Protein Design
+Version: 0.1.0
+Authors@R: 
+    c(
+        person(
+            given = "Da", 
+            family = "Tian", 
+            email = "huapy0870@gmail.com", 
+            role = c("aut", "cre"),
+            comment = c(ORCID = "0000-0000-0000-0000")
+        ),
+        person(
+            given = "Huang", 
+            family = "Doudou", 
+            role = "ctb"
+        )
+    )
+Description: This package provides tools for quantum chemistry-based protein design 
+    and the analysis of missense mutations. It integrates functionalities from 
+    various libraries to streamline research workflows.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports:
+    ieugwasr,
+    TwoSampleMR,
+    MR.SPI,
+    dplyr,
+    stringr,
+    data.table
