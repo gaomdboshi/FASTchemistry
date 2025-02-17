@@ -6,6 +6,9 @@
 #' @return 返回该基因的错义突变信息，并将其保存为 CSV 文件
 #' @export
 get_missense_snp <- function(gene_name) {
+  # 先进行用户授权验证
+  validate_user()  # 调用你定义的授权验证函数
+
   library(biomaRt)
 
   # 确保基因名为UTF-8编码
@@ -36,7 +39,7 @@ get_missense_snp <- function(gene_name) {
                        filters = 'ensembl_gene', values = gene_id, mart = ensembl_snp)
 
     # 标注所有变异类型
-    gene_info$mutation_type <- ifelse(gene_info$consequence_type_tv == "missense_variant", 
+    gene_info$mutation_type <- ifelse(gene_info$consequence_type_tv == "missense_variant",
                                       "Missense Variant", "Other Variant")
 
     # 过滤出错义突变（missense variant）
