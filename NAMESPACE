@@ -2,5 +2,6 @@
 
 export(generate_token)
 export(get_hard_drive_serial)
+export(get_missense_snp)
 export(install_chemistry)
 export(validate_user)
