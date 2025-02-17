@@ -1,9 +1,3 @@
-#' Validate User Authorization
-#'
-#' This function checks if the user is authorized based on their token.
-#'
-#' @return TRUE if authorized, otherwise stops with an error.
-#' @export
 validate_user <- function() {
   # 获取硬盘序列号
   serial <- get_hard_drive_serial()
@@ -11,8 +5,8 @@ validate_user <- function() {
   # 根据硬盘序列号生成令牌
   user_token <- digest::digest(serial, algo = "sha256")
 
-  # **这里使用本地路径** 读取授权文件
-  auth_file <- "D:/桌面/自创包/FASTchemistry/inst/extdata/authorized_tokens.csv"  # 修改为你的本地路径
+  # 使用相对路径读取授权文件
+  auth_file <- system.file("extdata", "authorized_tokens.csv", package = "FASTchemistry")
   if (!file.exists(auth_file)) {
     stop("Authorization file not found. Please contact the package maintainer.")
   }
@@ -28,4 +22,3 @@ validate_user <- function() {
     stop("Unauthorized user. Please contact the package maintainer for access.")
   }
 }
-
