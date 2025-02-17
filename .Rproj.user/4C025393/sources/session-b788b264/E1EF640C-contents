@@ -1,0 +1,107 @@
+# ====================分割线=========================
+# 感谢您使用Fast2TWAS
+# 如有任何关于该包安装和使用方面的疑问请您务必联系我！(⑅˃◡˂⑅)
+# 如果您有关于该包的任何意见和建议请毫不犹豫的联系我！(⑅˃◡˂⑅)
+# 1.邮箱：xiechengyong@yeah.net
+# 2.b站：https://space.bilibili.com/397473016?spm_id_from=..0.0
+# 3.微信号：shengxindazhaxie
+# 4.公众号：生信蟹道人
+# 5.简书：生信蟹道人
+# ====================分割线==========================
+
+
+#设置当前工作路径
+setwd("E:/蟹道人/pre_eqtlsum")
+
+#清除一切变量
+rm(list=ls())
+#释放不再使用的内存
+gc()
+#显式路径
+getwd()
+#显示R包安装位置
+.libPaths()
+
+
+library(Fast2TWAS)
+library("xQTLbiolinks")
+
+gene="PCSK9"
+wind_size = 1000000
+tissue=force(tissueSiteDetailGTExv8)
+# tissue=force(tissueSiteDetailGTExv8)[54,"tissueSiteDetail"]
+build = 37
+pval=5e-8          #eqtl的筛选阈值
+timeout=120         #设置最大请求时间
+chr_hg38=NULL       #指定eqtls所在染色体
+startbp_hg38=NULL   #指定eqtls的起始位置
+endbp_hg38=NULL     #指定eqtls的终止位置
+MAF=0.001           #eqtls位点的maf阈值
+Neff=T              #设置有效样本数
+outname=NULL        #输出文件名前缀，最好是基因名加上重要参数 
+
+eqtl_sum=get_eqtlsum_from_eQTL_Catalogue(gene=gene,
+                                         wind_size = wind_size,
+                                         tissue="Whole Blood",
+                                         build = build,
+                                         pval = pval,
+                                         MAF=MAF,
+                                         Neff=T,
+                                         timeout=timeout,
+                                         chr_hg38=NULL,
+                                         startbp_hg38=NULL,
+                                         endbp_hg38=NULL,
+                                         download_method=1,
+                                         outname="eqtl_sum")
+
+eqtl_sum_2=get_eqtlsum_from_eQTL_Catalogue(gene=gene,
+                                           wind_size = wind_size,
+                                           tissue="Whole Blood",
+                                           build = 38,
+                                           pval = pval,
+                                           MAF=MAF,
+                                           Neff=T,
+                                           timeout=timeout,
+                                           chr_hg38=NULL,
+                                           startbp_hg38=NULL,
+                                           endbp_hg38=NULL,
+                                           download_method=2,
+                                           outname="eqtl_sum_2")
+
+eqtl_sum_3=get_eqtlsum_from_eQTL_Catalogue(gene=gene,
+                                           wind_size = wind_size,
+                                           tissue="Whole Blood",
+                                           build = build,
+                                           pval = pval,
+                                           MAF=MAF,
+                                           Neff=T,
+                                           timeout=timeout,
+                                           chr_hg38=1,
+                                           startbp_hg38=54039447,
+                                           endbp_hg38=56064852,
+                                           download_method=1,
+                                           outname="eqtl_sum_3")
+
+eqtl_sum_4=get_eqtlsum_from_eQTL_Catalogue(gene=gene,
+                                           wind_size = wind_size,
+                                           tissue="Whole Blood",
+                                           build = build,
+                                           pval = pval,
+                                           MAF=MAF,
+                                           Neff=T,
+                                           timeout=timeout,
+                                           chr_hg38=1,
+                                           startbp_hg38=54039447,
+                                           endbp_hg38=56064852,
+                                           download_method=2,
+                                           outname="eqtl_sum_4")
+
+
+
+
+
+
+
+
+
+

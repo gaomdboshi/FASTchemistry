@@ -1,0 +1,3 @@
+library(FASTchemistry)
+generate_token()
+install_chemistry()

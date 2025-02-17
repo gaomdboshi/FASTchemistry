@@ -1,0 +1,6 @@
+library(FASTchemistry)
+generate_token()
+install_chemistry()
+usethis::edit_r_environ()
+install.packages("intervals")
+.libPaths()
